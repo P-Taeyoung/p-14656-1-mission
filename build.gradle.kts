@@ -25,7 +25,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-data-elasticsearch-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
-    runtimeOnly("org.springframework.boot:spring-boot-docker-compose")
+//    runtimeOnly("org.springframework.boot:spring-boot-docker-compose")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
