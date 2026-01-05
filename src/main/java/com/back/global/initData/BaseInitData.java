@@ -50,7 +50,7 @@ public class BaseInitData {
 	private void work3() {
 		log.debug("post 단건 조회");
 		for (Post post : postService.findAll()) {
-			Post singlePost = postService.findById(post.getId()).get();
+			Post singlePost = postService.findById(post.getId());
 			log.debug("단건 조회된 Post: {}", singlePost);
 		}
 	}
