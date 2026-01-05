@@ -1,9 +1,5 @@
 package com.back.global.initData;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,11 +21,7 @@ public class BaseInitData {
 	public ApplicationRunner baseInitDataRunner() {
 		return args -> {
 			work1();
-
-			log.debug("기존 Post 전체조회");
 			work2();
-
-			log.debug("post 단건 조회");
 			work3();
 		};
 	}
@@ -48,19 +40,18 @@ public class BaseInitData {
 		}
 	}
 
-	private List<String> work2() {
-		List<String> postIds = new ArrayList<>();
+	private void work2() {
+		log.debug("기존 Post 전체조회");
 		for (Post post : postService.findAll()) {
 			log.debug("Existing Post: {}", post);
 		}
-		return postIds;
 	}
 
 	private void work3() {
-
-		for (String ids : work2()) {
-			Optional<Post> post = postService.findById(ids);
-			log.debug("단건 조회된 Post: {}", post);
+		log.debug("post 단건 조회");
+		for (Post post : postService.findAll()) {
+			Post singlePost = postService.findById(post.getId()).get();
+			log.debug("단건 조회된 Post: {}", singlePost);
 		}
 	}
 }
